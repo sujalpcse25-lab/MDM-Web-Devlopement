@@ -1,132 +1,465 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gaming Fest 2026 - College Tech Fest Invitation</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts (Outfit) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Outfit', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    .bg-dots {
-      background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-      background-size: 20px 20px;
-    }
-  </style>
-</head>
-<body class="bg-[#060913] text-slate-100 min-h-screen flex flex-col justify-between bg-dots relative overflow-x-hidden antialiased">
-  
-  <!-- Backdrop Blur Glow Filters -->
-  <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/10 blur-[120px] pointer-events-none"></div>
-  <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-cyan-900/10 blur-[120px] pointer-events-none"></div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punjabi Dhaba</title>
 
-  <!-- Main Container -->
-  <div id="main-canvas" class="flex-1 flex flex-col justify-between py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
-    
-    <!-- Hero Header -->
-    <header class="text-center mt-8">
-      <div id="college-tag" class="inline-block mb-3">
-        <span class="text-xs md:text-sm font-bold tracking-widest text-indigo-400 uppercase">SB JAIN NAGPUR</span>
-      </div>
-      
-      <div id="fest-title">
-        <h1 class="text-5xl md:text-8xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-yellow-400 leading-none">Gaming Fest 2026</h1>
-      </div>
-      
-      <div id="fest-tagline" class="mt-4 max-w-xl mx-auto">
-        <p class="text-slate-400 font-medium tracking-wide text-sm md:text-base">Annual National Level Gaming Fest</p>
-      </div>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col selection:bg-emerald-500 selection:text-white">
+
+    <!-- Navigation Header -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-30 border-b border-slate-200/80 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo with Gradient Icon -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-amber-500 flex items-center justify-center text-white shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform duration-300">
+                    <i class="fa-solid fa-leaf text-xl"></i>
+                </div>
+                <div>
+                    <span class="font-extrabold text-2xl tracking-tight bg-gradient-to-r from-emerald-600 via-teal-600 to-amber-600 bg-clip-text text-transparent">
+                        Golu Da Dhaba 
+                    </span>
+                    <span class="block text-[10px] font-bold uppercase tracking-widest text-slate-600">Oye! Chak de Phatte</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 font-semibold text-sm text-slate-600">
+                <a href="#hero" class="hover:text-emerald-600 transition-colors">Home</a>
+                <a href="#menu" class="text-emerald-600 font-bold">Desi Food Items</a>
+                <a href="#features" class="hover:text-emerald-600 transition-colors">Why Desi Food ?</a>
+                <a href="#contact" class="hover:text-emerald-600 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Header Action Button with Gradient -->
+            <a href="#menu" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-emerald-500 via-teal-500 to-amber-500 hover:from-emerald-600 hover:to-amber-600 text-white font-bold text-sm shadow-lg shadow-emerald-500/25 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
+                Explore Menu
+            </a>
+        </div>
     </header>
 
-    <!-- Invitation Message -->
-    <section id="invite-desc" class="text-center my-8 max-w-2xl mx-auto">
-      <p class="text-base md:text-lg text-slate-300 leading-relaxed">
-        We cordially invite Game enthusiasts and faculty from all streams to join us for a three-day celebration of Gaming festival .
-      </p>
-    </section>
+<!-- Hero Section -->
+<section id="hero" class="relative py-16 lg:py-24 bg-gradient-to-br from-orange-50 via-red-50/50 to-yellow-50 overflow-hidden">
+    <!-- Background Gradient Orbs -->
+    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-gradient-to-br from-orange-300/30 to-red-400/20 blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-gradient-to-tr from-yellow-300/30 to-orange-300/20 blur-3xl pointer-events-none"></div>
 
-    <!-- Events Grid Layout -->
-    <section id="event-grid" class="my-10">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-orange-500/10 via-red-500/10 to-yellow-500/10 border border-orange-200 text-orange-700 text-xs font-bold uppercase tracking-wider mb-4">
+            🍲 Authentic Desi Flavors
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight max-w-4xl mx-auto">
+            Experience the Taste of <span class="bg-gradient-to-r from-orange-600 via-red-600 to-yellow-600 bg-clip-text text-transparent">Traditional Indian Cuisine</span>
+        </h1>
+        <p class="mt-4 text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            Handcrafted recipes inspired by India’s rich culinary heritage — from smoky tandoors to spicy curries, wholesome dals, and street food delights.
+        </p>
+
+        <!-- Quick Filter Pill Highlights -->
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+            <span class="px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm text-xs font-semibold text-slate-700 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-orange-500"></span> 100% Authentic Spices
+            </span>
+            <span class="px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm text-xs font-semibold text-slate-700 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-red-500"></span> Freshly Cooked Daily
+            </span>
+            <span class="px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm text-xs font-semibold text-slate-700 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-yellow-500"></span> Heritage Recipes
+            </span>
+        </div>
+    </div>
+</section>
+
+    <!-- MAIN FOOD MENU SECTION (TAILWIND CSS GRID) -->
+    <section id="menu" class="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <!-- Card 1 -->
-        <div id="card-1" class="event-card bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-2xl p-6 hover:border-cyan-500/30 transition-all duration-300 shadow-xl hover:shadow-cyan-500/5 hover:-translate-y-1">
-          <span class="text-2xl mb-3 block">&#127918;</span>
-          <h3 class="text-lg font-bold text-teal-400 mb-2">Free fire event</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">24-hour  BR Ranked Mode and CS Ranked Mode.</p>
+        <!-- Section Title with Gradient Accent -->
+        <div class="text-center mb-16">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                Our Popular Desi Food Items
+            </h2>
+            <div class="mt-3 w-24 h-1.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-amber-500 mx-auto rounded-full"></div>
+            <p class="mt-4 text-slate-500 text-sm max-w-lg mx-auto">
+                Discover our signature Desi dishes neatly arranged using responsive Tailwind CSS Grid.
+            </p>
         </div>
 
-        <!-- Card 2 -->
-        <div id="card-2" class="event-card bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-2xl p-6 hover:border-cyan-500/30 transition-all duration-300 shadow-xl hover:shadow-cyan-500/5 hover:-translate-y-1">
-          <span class="text-2xl mb-3 block">🤖</span>
-          <h3 class="text-lg font-bold text-teal-400 mb-2">Robo Soccer</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Design and calibrate custom bots to compete in our soccer arena tournament.</p>
-        </div>
+        <!-- TAILWIND CSS GRID CONTAINER -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-        <!-- Card 3 -->
-        <div id="card-3" class="event-card bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-2xl p-6 hover:border-cyan-500/30 transition-all duration-300 shadow-xl hover:shadow-cyan-500/5 hover:-translate-y-1">
-          <span class="text-2xl mb-3 block">⚙️</span>
-          <h3 class="text-lg font-bold text-teal-400 mb-2">CAD Design Arena</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Showcase your drafting accuracy by styling complex structural assemblies on the spot.</p>
-        </div>
+            <!-- Desi FOOD CARD 1 -->
+            <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group">
+                <div>
+                    <!-- Image Container with Hover Zoom & Gradient Badge Overlay -->
+                    <div class="relative h-60 w-full overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1775717427684-75b886ebbfc9?q=80&w=1010&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                             alt="Panner Tikka Sliders" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-40"></div>
+                        
+                        <!-- Category Badge -->
+                        <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r from-emerald-500 to-teal-500 shadow-md">
+                            Superfood Bowl
+                        </span>
+                        
+                        <!-- Price Tag in Rupees -->
+                        <span class="absolute bottom-4 right-4 px-3.5 py-1.5 rounded-xl text-sm font-extrabold text-white bg-slate-900/80 backdrop-blur-md border border-white/20">
+                            ₹250
+                        </span>
+                    </div>
 
-      </div>
+                    <!-- Card Body -->
+                    <div class="p-6">
+                        <div class="flex items-center gap-1.5 text-amber-500 text-xs font-bold mb-2">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span class="text-slate-600 font-semibold ml-1">4.9 (150+ reviews)</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                            Panner Tikka Sliders
+                        </h3>
+                        <p class="mt-2 text-slate-600 text-xs leading-relaxed">
+                            Juicy paneer tikka served in a soft bun with fresh vegetables and a special sauce.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Action Button with Gradient -->
+                <div class="px-6 pb-6 pt-2">
+                    <button class="w-full py-3 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-amber-500 hover:from-emerald-600 hover:to-amber-600 text-white font-bold text-sm shadow-md shadow-emerald-500/20 hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-shopping"></i> Order Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Desi FOOD CARD 2 -->
+            <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group">
+                <div>
+                    <!-- Image Container -->
+                    <div class="relative h-60 w-full overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1582169296194-e4d644c48063?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                             alt="Samosa Nachos" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-40"></div>
+                        
+                        <!-- Category Badge -->
+                        <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r from-teal-500 to-cyan-600 shadow-md">
+                            100% Dairy-Free
+                        </span>
+                        
+                        <!-- Price Tag in Rupees -->
+                        <span class="absolute bottom-4 right-4 px-3.5 py-1.5 rounded-xl text-sm font-extrabold text-white bg-slate-900/80 backdrop-blur-md border border-white/20">
+                            ₹149
+                        </span>
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="p-6">
+                        <div class="flex items-center gap-1.5 text-amber-500 text-xs font-bold mb-2">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span class="text-slate-600 font-semibold ml-1">4.8 (110+ reviews)</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                            Samosa Nachos
+                        </h3>
+                        <p class="mt-2 text-slate-600 text-xs leading-relaxed">
+                            Crispy samosas filled with spiced potatoes and peas, served with a side of nacho cheese sauce.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Action Button with Gradient -->
+                <div class="px-6 pb-6 pt-2">
+                    <button class="w-full py-3 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-amber-500 hover:from-emerald-600 hover:to-amber-600 text-white font-bold text-sm shadow-md shadow-emerald-500/20 hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-shopping"></i> Order Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Desi FOOD CARD 3 -->
+            <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group">
+                <div>
+                    <!-- Image Container -->
+                    <div class="relative h-60 w-full overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1694849789325-914b71ab4075?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                             alt="Veg Dosa with Coconut Chutney" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-40"></div>
+                        
+                        <!-- Category Badge -->
+                        <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r from-amber-500 to-orange-500 shadow-md">
+                            Best Seller
+                        </span>
+                        
+                        <!-- Price Tag in Rupees -->
+                        <span class="absolute bottom-4 right-4 px-3.5 py-1.5 rounded-xl text-sm font-extrabold text-white bg-slate-900/80 backdrop-blur-md border border-white/20">
+                            ₹129
+                        </span>
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="p-6">
+                        <div class="flex items-center gap-1.5 text-amber-500 text-xs font-bold mb-2">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span class="text-slate-600 font-semibold ml-1">5.0 (230+ reviews)</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                            Veg Dosa with Coconut Chutney
+                        </h3>
+                        <p class="mt-2 text-slate-600 text-xs leading-relaxed">
+                            South Indian staple, light yet filling,  especially loved for its crisp texture and wholesome vegetable fillings
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Action Button with Gradient -->
+                <div class="px-6 pb-6 pt-2">
+                    <button class="w-full py-3 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-amber-500 hover:from-emerald-600 hover:to-amber-600 text-white font-bold text-sm shadow-md shadow-emerald-500/20 hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-shopping"></i> Order Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Desi FOOD CARD 4 -->
+            <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group">
+                <div>
+                    <!-- Image Container -->
+                    <div class="relative h-60 w-full overflow-hidden bg-slate-100">
+                        <img src="https://media.istockphoto.com/id/994875822/photo/meat-stew-saute-on-lavash.jpg?s=1024x1024&w=is&k=20&c=UnpHRUz0VlrB4e_PIdB9oA96hosGwRZ61J3zl0FTXBo=" 
+                             alt="Woodfired Naan And Kulcha" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-40"></div>
+                        
+                        <!-- Category Badge -->
+                        <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r from-emerald-500 to-teal-500 shadow-md">
+                            Woodfired Special
+                        </span>
+                        
+                        <!-- Price Tag in Rupees -->
+                        <span class="absolute bottom-4 right-4 px-3.5 py-1.5 rounded-xl text-sm font-extrabold text-white bg-slate-900/80 backdrop-blur-md border border-white/20">
+                            ₹299
+                        </span>
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="p-6">
+                        <div class="flex items-center gap-1.5 text-amber-500 text-xs font-bold mb-2">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span class="text-slate-600 font-semibold ml-1">4.7 (160+ reviews)</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                            Woodfired Naan & Kulcha
+                        </h3>
+                        <p class="mt-2 text-slate-600 text-xs leading-relaxed">
+                            Charred edges, fluffy inside, often paired with butter chicken or paneer
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Action Button with Gradient -->
+                <div class="px-6 pb-6 pt-2">
+                    <button class="w-full py-3 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-amber-500 hover:from-emerald-600 hover:to-amber-600 text-white font-bold text-sm shadow-md shadow-emerald-500/20 hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-shopping"></i> Order Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Desi FOOD CARD 5 -->
+            <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group">
+                <div>
+                    <!-- Image Container -->
+                    <div class="relative h-60 w-full overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1626132647523-66f5bf380027?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                             alt="Misal Pav" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-40"></div>
+                        
+                        <!-- Category Badge -->
+                        <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r from-rose-500 to-amber-500 shadow-md">
+                            Spicy Delight
+                        </span>
+                        
+                        <!-- Price Tag in Rupees -->
+                        <span class="absolute bottom-4 right-4 px-3.5 py-1.5 rounded-xl text-sm font-extrabold text-white bg-slate-900/80 backdrop-blur-md border border-white/20">
+                            ₹179
+                        </span>
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="p-6">
+                        <div class="flex items-center gap-1.5 text-amber-500 text-xs font-bold mb-2">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span class="text-slate-600 font-semibold ml-1">4.8 (125+ reviews)</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                            Misal Pav
+                        </h3>
+                        <p class="mt-2 text-slate-600 text-xs leading-relaxed">
+                            A spicy and flavorful Maharashtrian dish made with sprouted moth beans, served with pav (soft bread) and various chutneys.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Action Button with Gradient -->
+                <div class="px-6 pb-6 pt-2">
+                    <button class="w-full py-3 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-amber-500 hover:from-emerald-600 hover:to-amber-600 text-white font-bold text-sm shadow-md shadow-emerald-500/20 hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-shopping"></i> Order Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Desi FOOD CARD 6 -->
+            <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group">
+                <div>
+                    <!-- Image Container -->
+                    <div class="relative h-60 w-full overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1568308853224-1f17b4084076?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                             alt="Fruit Chaat" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-40"></div>
+                        
+                        <!-- Category Badge -->
+                        <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r from-purple-500 to-indigo-500 shadow-md">
+                            Raw & Guilt-Free
+                        </span>
+                        
+                        <!-- Price Tag in Rupees -->
+                        <span class="absolute bottom-4 right-4 px-3.5 py-1.5 rounded-xl text-sm font-extrabold text-white bg-slate-900/80 backdrop-blur-md border border-white/20">
+                            ₹99
+                        </span>
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="p-6">
+                        <div class="flex items-center gap-1.5 text-amber-500 text-xs font-bold mb-2">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span class="text-slate-600 font-semibold ml-1">4.9 (180+ reviews)</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                            Fruit Chaat
+                        </h3>
+                        <p class="mt-2 text-slate-600 text-xs leading-relaxed">
+                            A refreshing mix of seasonal fruits with a hint of spices and a drizzle of honey.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Action Button with Gradient -->
+                <div class="px-6 pb-6 pt-2">
+                    <button class="w-full py-3 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-amber-500 hover:from-emerald-600 hover:to-amber-600 text-white font-bold text-sm shadow-md shadow-emerald-500/20 hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-shopping"></i> Order Now
+                    </button>
+                </div>
+            </div>
+
+        </div>
     </section>
 
-    <!-- Venue Badge Details -->
-    <section id="event-venue" class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 my-6 text-center">
-      <div class="flex items-center gap-3">
-        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">📅</span>
-        <div class="text-left">
-          <p class="text-sm font-semibold text-white">October 12-14, 2026</p>
-          <p class="text-xs text-slate-400">09:00 AM onwards</p>
+<!-- Why Choose Us / Features Section -->
+<section id="features" class="py-16 bg-gradient-to-br from-orange-500/5 via-red-500/5 to-yellow-500/5 border-y border-slate-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            
+            <!-- Authentic Flavors -->
+            <div class="p-8 bg-white rounded-3xl border border-slate-200/60 shadow-sm hover:shadow-md transition-shadow">
+                <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-orange-500 to-red-500 flex items-center justify-center text-white text-2xl shadow-md mb-4">
+                    <i class="fa-solid fa-pepper-hot"></i>
+                </div>
+                <h4 class="font-bold text-lg text-slate-900">Authentic Flavors</h4>
+                <p class="text-slate-500 text-xs mt-2 leading-relaxed">Traditional recipes crafted with handpicked spices for a true Desi taste.</p>
+            </div>
+
+            <!-- Rich & Wholesome -->
+            <div class="p-8 bg-white rounded-3xl border border-slate-200/60 shadow-sm hover:shadow-md transition-shadow">
+                <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-red-500 to-yellow-500 flex items-center justify-center text-white text-2xl shadow-md mb-4">
+                    <i class="fa-solid fa-bowl-food"></i>
+                </div>
+                <h4 class="font-bold text-lg text-slate-900">Rich & Wholesome</h4>
+                <p class="text-slate-500 text-xs mt-2 leading-relaxed">Balanced meals with fresh ingredients, hearty portions, and soulful cooking.</p>
+            </div>
+
+            <!-- Cultural Heritage -->
+            <div class="p-8 bg-white rounded-3xl border border-slate-200/60 shadow-sm hover:shadow-md transition-shadow">
+                <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-yellow-500 to-orange-500 flex items-center justify-center text-white text-2xl shadow-md mb-4">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                </div>
+                <h4 class="font-bold text-lg text-slate-900">Cultural Heritage</h4>
+                <p class="text-slate-500 text-xs mt-2 leading-relaxed">Every dish carries the warmth of Indian tradition and family-style dining.</p>
+            </div>
+
         </div>
-      </div>
-      
-      <div class="flex items-center gap-3">
-        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">📍</span>
-        <div class="text-left">
-          <p class="text-sm font-semibold text-white">Grand Campus Auditorium</p>
-          <p class="text-xs text-slate-400">Auditorium Wing 3 & Tech Labs</p>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-white text-slate-600 py-10 mt-auto border-t border-slate-200">
+        <!-- Top Gradient Accent Line -->
+        <div class="h-1 w-full bg-gradient-to-r from-emerald-500 via-teal-500 to-amber-500 -mt-10 mb-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium">
+            <!-- Brand copyright -->
+            <div class="flex items-center gap-2">
+                <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-emerald-500 to-amber-500 flex items-center justify-center text-white text-xs font-bold">
+                    G
+                </div>
+                <span class="font-bold text-slate-800">Golu Da Dhaba</span> &copy; 2026. All rights reserved.
+            </div>
+
+            <!-- Social Media Anchor Links -->
+            <div class="flex items-center gap-3">
+                <a href="https://www.instagram.com/golu_dadhaba/" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-gradient-to-tr hover:from-amber-500 hover:to-rose-500 hover:text-white flex items-center justify-center text-slate-600 transition-all duration-300">
+                    <i class="fa-brands fa-instagram text-sm"></i>
+                </a>
+                <a href="https://www.facebook.com/golu.dadhaba" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-gradient-to-tr hover:from-emerald-500 hover:to-teal-500 hover:text-white flex items-center justify-center text-slate-600 transition-all duration-300">
+                    <i class="fa-brands fa-facebook-f text-sm"></i>
+                </a>
+                <a href="https://wa.me/9272136980" aria-label="WhatsApp" class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-gradient-to-tr hover:from-emerald-500 hover:to-green-600 hover:text-white flex items-center justify-center text-slate-600 transition-all duration-300">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                </a>
+            </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Call to Actions Buttons -->
-    <section id="cta-buttons" class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-6 text-center">
-      
-      <!-- Primary Register button -->
-      <a href="#" id="btn-primary" class="w-full sm:w-auto bg-gradient-to-r from-teal-400 to-cyan-500 hover:from-teal-500 hover:to-cyan-600 text-slate-900 font-bold px-8 py-3.5 rounded-xl shadow-lg shadow-teal-500/20 transform hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all duration-200 inline-block font-sans">
-        Register Now
-      </a>
-      
-      <!-- Secondary brochure button -->
-      <a href="#" id="btn-secondary" class="w-full sm:w-auto border border-slate-700 hover:border-slate-400 text-slate-300 hover:text-white font-medium px-8 py-3.5 rounded-xl hover:bg-slate-800/20 transition-all duration-200 inline-block font-sans">
-        Download Brochure
-      </a>
-
-    </section>
-
-  </div>
-
-  <!-- Footer Branding -->
-  <footer class="py-6 border-t border-slate-900 text-center text-xs text-slate-500 bg-slate-950/40">
-    <p>Events 2026 - College Gaming Fest Invitation Page</p>
-  </footer>
+    </footer>
 
 </body>
 </html>
