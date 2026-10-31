@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Computer Science Department – Student Help Portal</title>
+
+  <!-- 1. TAILWIND CSS: loaded from a CDN so you don't need to install anything -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-100 text-slate-800 min-h-screen">
+
+  <!-- ============ 2. HTML STRUCTURE ============ -->
+
+  <!-- Header -->
+  <header class="bg-indigo-700 text-white py-10 px-4 text-center">
+    <h1 class="text-3xl md:text-4xl font-bold">Student Help Portal</h1>
+    <p class="mt-2 text-indigo-100">Quick answers to the questions students ask most.</p>
+  </header>
+
+  <main class="max-w-2xl mx-auto px-4 py-8">
+
+    <!-- Search box (bonus feature) -->
+    <input
+      id="searchBox"
+      type="text"
+      placeholder="Search a question..."
+      class="w-full mb-6 px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+    />
+
+    <!-- Expand / collapse all buttons -->
+    <div class="flex gap-3 mb-4">
+      <button id="expandAll" class="text-sm px-3 py-1.5 rounded bg-indigo-600 text-white hover:bg-indigo-700">
+        Expand all
+      </button>
+      <button id="collapseAll" class="text-sm px-3 py-1.5 rounded bg-slate-300 hover:bg-slate-400">
+        Collapse all
+      </button>
+    </div>
+
+    <!-- FAQ list: each .faq-item has a question button and an answer box -->
+    <div id="faqList" class="space-y-3">
+
+      <div class="faq-item bg-white rounded-lg shadow-sm border border-slate-200">
+        <button class="faq-question w-full flex justify-between items-center text-left px-5 py-4 font-semibold">
+          <span>How do I register for courses?</span>
+          <span class="icon text-2xl text-indigo-600 transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-answer hidden px-5 pb-4 text-slate-600">
+          Log in to the student portal, open the "Course Registration" tab, choose your subjects and click Submit. Registration closes two weeks after the semester starts.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-lg shadow-sm border border-slate-200">
+        <button class="faq-question w-full flex justify-between items-center text-left px-5 py-4 font-semibold">
+          <span>What is the minimum attendance required?</span>
+          <span class="icon text-2xl text-indigo-600 transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-answer hidden px-5 pb-4 text-slate-600">
+          Students need at least 75% attendance in each subject to be allowed to sit for the end-semester exam.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-lg shadow-sm border border-slate-200">
+        <button class="faq-question w-full flex justify-between items-center text-left px-5 py-4 font-semibold">
+          <span>How can I get my ID card replaced?</span>
+          <span class="icon text-2xl text-indigo-600 transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-answer hidden px-5 pb-4 text-slate-600">
+          Submit a written application to the department office along with a copy of the police complaint (if lost) and the replacement fee.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-lg shadow-sm border border-slate-200">
+        <button class="faq-question w-full flex justify-between items-center text-left px-5 py-4 font-semibold">
+          <span>Where can I find the exam timetable?</span>
+          <span class="icon text-2xl text-indigo-600 transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-answer hidden px-5 pb-4 text-slate-600">
+          The timetable is posted on the department notice board and under the "Exams" section of the student portal at least three weeks before the exams.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-lg shadow-sm border border-slate-200">
+        <button class="faq-question w-full flex justify-between items-center text-left px-5 py-4 font-semibold">
+          <span>How do I apply for a scholarship?</span>
+          <span class="icon text-2xl text-indigo-600 transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-answer hidden px-5 pb-4 text-slate-600">
+          Fill in the scholarship form available at the administrative office, attach your marksheets and income certificate, and submit it before the deadline announced each year.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-lg shadow-sm border border-slate-200">
+        <button class="faq-question w-full flex justify-between items-center text-left px-5 py-4 font-semibold">
+          <span>Can I use the computer labs after class hours?</span>
+          <span class="icon text-2xl text-indigo-600 transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-answer hidden px-5 pb-4 text-slate-600">
+          Yes, labs are open until 6 PM on weekdays. For project work after that, get written permission from your faculty advisor.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Shown when search finds nothing -->
+    <p id="noResults" class="hidden text-center text-slate-500 mt-6">
+      No questions match your search. Try different words or contact the department office.
+    </p>
+  </main>
+
+  <!-- ============ 3. JAVASCRIPT ============ -->
+  <script>
+    // Step 1: Select elements from the page using the DOM
+    const faqItems    = document.querySelectorAll(".faq-item");
+    const searchBox   = document.getElementById("searchBox");
+    const noResults   = document.getElementById("noResults");
+    const expandAll   = document.getElementById("expandAll");
+    const collapseAll = document.getElementById("collapseAll");
+
+    // Helper: open or close ONE item
+    function setOpen(item, shouldOpen) {
+      const answer = item.querySelector(".faq-answer");
+      const icon   = item.querySelector(".icon");
+
+      if (shouldOpen) {
+        answer.classList.remove("hidden");  // show the answer
+        icon.textContent = "−";             // change + to −
+      } else {
+        answer.classList.add("hidden");     // hide the answer
+        icon.textContent = "+";
+      }
+    }
+
+    // Step 2: Add a click event listener to every question button
+    faqItems.forEach(function (item) {
+      const question = item.querySelector(".faq-question");
+
+      question.addEventListener("click", function () {
+        // Is the answer currently hidden? If yes -> open it, otherwise close it.
+        const answer = item.querySelector(".faq-answer");
+        const isHidden = answer.classList.contains("hidden");
+        setOpen(item, isHidden);
+      });
+    });
+
+    // Step 3: Expand all / Collapse all buttons
+    expandAll.addEventListener("click", function () {
+      faqItems.forEach(function (item) { setOpen(item, true); });
+    });
+
+    collapseAll.addEventListener("click", function () {
+      faqItems.forEach(function (item) { setOpen(item, false); });
+    });
+
+    // Step 4: Search – runs every time the user types
+    searchBox.addEventListener("input", function () {
+      const text = searchBox.value.toLowerCase();
+      let matches = 0;
+
+      faqItems.forEach(function (item) {
+        const content = item.textContent.toLowerCase();
+
+        if (content.includes(text)) {
+          item.classList.remove("hidden");
+          matches++;
+        } else {
+          item.classList.add("hidden");
+        }
+      });
+
+      // Show a message if nothing matched
+      noResults.classList.toggle("hidden", matches > 0);
+    });
+  </script>
+</body>
+</html>
