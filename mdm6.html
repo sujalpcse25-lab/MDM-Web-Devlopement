@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Grade Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    table {
+      background: #ffffff;
+      border-collapse: collapse;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    th {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px;
+    }
+
+    td {
+      text-align: center;
+      padding: 8px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h2>Student Grade Calculator</h2>
+
+  <!-- Input Table -->
+  <table border="1" cellpadding="10">
+    <tr>
+      <th>Sr No.</th>
+      <th>Subject</th>
+      <th>Marks</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>DMGT</td>
+      <td><input type="number" id="sub1" required></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>MDM WD</td>
+      <td><input type="number" id="sub2" required></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>ES</td>
+      <td><input type="number" id="sub3" required></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>ED</td>
+      <td><input type="number" id="sub4" required></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Chemistry</td>
+      <td><input type="number" id="sub5" required></td>
+    </tr>
+    <tr>
+      <td colspan="2" style="text-align:center;">
+        <button type="button" onclick="calculateGrade()">Calculate Result</button>
+      </td>
+    </tr>
+  </table>
+  <h1>Total marks</h1>
+  <h1 id="total"></h1>
+  <h1>Percentage</h1>
+  <h1 id="percentage"></h1>
+  <h1>Grade</h1>
+  <h1 id="grade"></h1>
+
+  <script>
+    function calculateGrade() {
+        let sub1 = Number(document.getElementById("sub1").value);
+        let sub2 = Number(document.getElementById("sub2").value);
+        let sub3 = Number(document.getElementById("sub3").value);
+        let sub4 = Number(document.getElementById("sub4").value);
+        let sub5 = Number(document.getElementById("sub5").value);
+        let total = sub1 + sub2 + sub3 + sub4 + sub5;
+        let per = (total / 500) * 100;
+        let GRADE = "";
+        if(per > 95){
+            GRADE = "A+";
+        }
+        else if(per > 90){
+            GRADE = "A";
+        }
+        else if(per > 80){
+            GRADE = "B+";
+        }
+        else if(per > 70){
+            GRADE = "B";
+        }
+        else if(per > 60){
+            GRADE = "C+";
+        }
+        else if(per > 50){
+            GRADE = "C";
+        }
+        else if(per > 40){
+            GRADE = "D";
+        }
+        else{
+            GRADE = "F";
+        }
+        document.getElementById("total").innerHTML = total;
+        document.getElementById("percentage").innerHTML = per + "%";
+        document.getElementById("grade").innerHTML = GRADE;
+    }
+  </script>
+</body>
+</html>
