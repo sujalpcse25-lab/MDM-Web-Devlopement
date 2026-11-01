@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- This line makes the page responsive on phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Expense Tracker</title>
+
+  <!-- 1. CSS: the Tailwind-style utility classes used on this page, written out in one
+       small <style> block. No CDN is loaded, so there are no console warnings and the
+       page works offline. (This is what the Tailwind CLI would generate for this page.) -->
+  <style>
+    /* Base reset */
+    *, ::before, ::after { box-sizing: border-box; border: 0 solid #e2e8f0; }
+    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.5; }
+    h1, h2, p, ul { margin: 0; }
+    ul { list-style: none; padding: 0; }
+    h1, h2 { font-size: inherit; font-weight: inherit; }
+    button, input, select { font: inherit; color: inherit; }
+    button { background: transparent; cursor: pointer; }
+
+    /* Layout */
+    .flex { display: flex; } .flex-col { flex-direction: column; } .grid { display: grid; }
+    .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+    .items-center { align-items: center; } .justify-between { justify-content: space-between; }
+    .gap-2 { gap: .5rem; } .gap-3 { gap: .75rem; } .gap-4 { gap: 1rem; } .gap-6 { gap: 1.5rem; }
+    .space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: .75rem; }
+    .space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.5rem; }
+    .divide-y > :not([hidden]) ~ :not([hidden]) { border-top-width: 1px; }
+    .divide-slate-200 > :not([hidden]) ~ :not([hidden]) { border-color: #e2e8f0; }
+    .max-w-5xl { max-width: 64rem; } .mx-auto { margin-left: auto; margin-right: auto; }
+    .min-h-screen { min-height: 100vh; } .w-full { width: 100%; }
+    .h-2 { height: .5rem; } .h-3 { height: .75rem; } .h-fit { height: fit-content; }
+    .overflow-hidden { overflow: hidden; }
+
+    /* Spacing */
+    .p-5 { padding: 1.25rem; } .px-3 { padding-left: .75rem; padding-right: .75rem; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .py-2 { padding-top: .5rem; padding-bottom: .5rem; }
+    .py-2\.5 { padding-top: .625rem; padding-bottom: .625rem; }
+    .py-3 { padding-top: .75rem; padding-bottom: .75rem; }
+    .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+    .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+    .mb-1 { margin-bottom: .25rem; } .mb-2 { margin-bottom: .5rem; } .mb-4 { margin-bottom: 1rem; }
+    .mt-1 { margin-top: .25rem; } .mt-2 { margin-top: .5rem; }
+
+    /* Text */
+    .text-xs { font-size: .75rem; } .text-sm { font-size: .875rem; } .text-lg { font-size: 1.125rem; }
+    .text-2xl { font-size: 1.5rem; line-height: 2rem; } .text-center { text-align: center; }
+    .font-medium { font-weight: 500; } .font-semibold { font-weight: 600; } .font-bold { font-weight: 700; }
+    .text-white { color: #fff; } .text-emerald-100 { color: #d1fae5; } .text-emerald-600 { color: #059669; }
+    .text-rose-600 { color: #e11d48; } .text-red-600 { color: #dc2626; }
+    .text-slate-400 { color: #94a3b8; } .text-slate-500 { color: #64748b; } .text-slate-800 { color: #1e293b; }
+
+    /* Backgrounds, borders, effects */
+    .bg-white { background: #fff; } .bg-slate-100 { background: #f1f5f9; } .bg-slate-200 { background: #e2e8f0; }
+    .bg-emerald-500 { background: #10b981; } .bg-emerald-600 { background: #059669; } .bg-emerald-700 { background: #047857; }
+    .bg-rose-500 { background: #f43f5e; } .bg-amber-500 { background: #f59e0b; }
+    .border { border-width: 1px; } .border-b { border-bottom-width: 1px; } .border-slate-300 { border-color: #cbd5e1; }
+    .rounded-lg { border-radius: .5rem; } .rounded-xl { border-radius: .75rem; } .rounded-full { border-radius: 9999px; }
+    .shadow-sm { box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+    .transition-all { transition: all .15s ease; } .duration-500 { transition-duration: .5s; }
+
+    /* Hover and focus */
+    .hover\:bg-emerald-700:hover { background: #047857; } .hover\:text-red-800:hover { color: #991b1b; }
+    .focus\:outline-none:focus { outline: none; }
+    .focus\:border-emerald-600:focus { border-color: #059669; }
+    .focus\:ring-2:focus { box-shadow: 0 0 0 2px #10b981; }
+
+    /* Responsive: sm = 640px and up, md = 768px, lg = 1024px */
+    @media (min-width: 640px) {
+      .sm\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .sm\:flex-row { flex-direction: row; }
+      .sm\:items-center { align-items: center; }
+      .sm\:justify-between { justify-content: space-between; }
+    }
+    @media (min-width: 768px) { .md\:text-4xl { font-size: 2.25rem; line-height: 2.5rem; } }
+    @media (min-width: 1024px) {
+      .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .lg\:col-span-1 { grid-column: span 1 / span 1; }
+      .lg\:col-span-2 { grid-column: span 2 / span 2; }
+    }
+
+    /* Must come last so hidden always wins */
+    .hidden { display: none; }
+  </style>
+</head>
+
+<body class="bg-slate-100 text-slate-800 min-h-screen">
+
+  <!-- ============ 2. HTML STRUCTURE ============ -->
+
+  <header class="bg-emerald-700 text-white py-8 px-4 text-center">
+    <h1 class="text-2xl md:text-4xl font-bold">Student Expense Tracker</h1>
+    <p class="mt-1 text-emerald-100">Know where your pocket money goes.</p>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-6 space-y-6">
+
+    <!-- Summary cards: 1 column on phone, 3 columns on larger screens -->
+    <section class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="bg-white rounded-xl shadow-sm p-5">
+        <p class="text-sm text-slate-500">Monthly budget (₹)</p>
+        <input id="budgetInput" type="number" min="0" value="5000"
+          class="mt-1 w-full text-2xl font-bold border-b border-slate-300 focus:outline-none focus:border-emerald-600" />
+      </div>
+      <div class="bg-white rounded-xl shadow-sm p-5">
+        <p class="text-sm text-slate-500">Total spent</p>
+        <p id="totalSpent" class="mt-1 text-2xl font-bold text-rose-600">₹0</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-sm p-5">
+        <p class="text-sm text-slate-500">Remaining</p>
+        <p id="remaining" class="mt-1 text-2xl font-bold text-emerald-600">₹5000</p>
+      </div>
+    </section>
+
+    <!-- Budget progress bar -->
+    <section class="bg-white rounded-xl shadow-sm p-5">
+      <div class="flex justify-between text-sm mb-2">
+        <span>Budget used</span>
+        <span id="percentText">0%</span>
+      </div>
+      <div class="w-full h-3 bg-slate-200 rounded-full overflow-hidden">
+        <div id="progressBar" class="h-3 bg-emerald-500 rounded-full transition-all duration-500" style="width:0%"></div>
+      </div>
+      <p id="warning" class="hidden mt-2 text-sm text-rose-600 font-semibold">
+        You have crossed your budget!
+      </p>
+    </section>
+
+    <!-- Form + list: stacked on phone, side by side on large screens -->
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+      <!-- Add expense form -->
+      <div class="bg-white rounded-xl shadow-sm p-5 lg:col-span-1 h-fit">
+        <h2 class="text-lg font-semibold mb-4">Add expense</h2>
+        <div class="space-y-3">
+          <input id="titleInput" type="text" placeholder="What did you buy?"
+            class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+          <input id="amountInput" type="number" min="1" placeholder="Amount (₹)"
+            class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+          <select id="categoryInput"
+            class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <option>Food</option>
+            <option>Travel</option>
+            <option>Books</option>
+            <option>Entertainment</option>
+            <option>Other</option>
+          </select>
+          <p id="errorMsg" class="hidden text-sm text-red-600">Enter a title and an amount above 0.</p>
+          <button id="addBtn" class="w-full py-2.5 rounded-lg bg-emerald-600 text-white font-semibold hover:bg-emerald-700">
+            Add expense
+          </button>
+        </div>
+      </div>
+
+      <!-- Expense list -->
+      <div class="bg-white rounded-xl shadow-sm p-5 lg:col-span-2">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+          <h2 class="text-lg font-semibold">Your expenses</h2>
+          <select id="filterInput" class="px-3 py-2 rounded-lg border border-slate-300 text-sm">
+            <option>All</option>
+            <option>Food</option>
+            <option>Travel</option>
+            <option>Books</option>
+            <option>Entertainment</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <ul id="expenseList" class="divide-y divide-slate-200"></ul>
+        <p id="emptyMsg" class="text-center text-slate-400 py-8">No expenses yet. Add your first one.</p>
+      </div>
+    </section>
+
+    <!-- Category breakdown -->
+    <section class="bg-white rounded-xl shadow-sm p-5">
+      <h2 class="text-lg font-semibold mb-4">Spending by category</h2>
+      <div id="categoryBars" class="space-y-3"></div>
+    </section>
+  </main>
+
+  <!-- ============ 3. JAVASCRIPT ============ -->
+  <script>
+    // Step 1: Select elements from the page (DOM)
+    const budgetInput   = document.getElementById("budgetInput");
+    const totalSpent    = document.getElementById("totalSpent");
+    const remaining     = document.getElementById("remaining");
+    const percentText   = document.getElementById("percentText");
+    const progressBar   = document.getElementById("progressBar");
+    const warning       = document.getElementById("warning");
+    const titleInput    = document.getElementById("titleInput");
+    const amountInput   = document.getElementById("amountInput");
+    const categoryInput = document.getElementById("categoryInput");
+    const errorMsg      = document.getElementById("errorMsg");
+    const addBtn        = document.getElementById("addBtn");
+    const filterInput   = document.getElementById("filterInput");
+    const expenseList   = document.getElementById("expenseList");
+    const emptyMsg      = document.getElementById("emptyMsg");
+    const categoryBars  = document.getElementById("categoryBars");
+
+    const categories = ["Food", "Travel", "Books", "Entertainment", "Other"];
+
+    // Step 2: Our data. Each expense: { id, title, amount, category }
+    let expenses = [];
+    let nextId = 1;
+
+    // Step 3: Save and load using localStorage so data survives a refresh.
+    // try/catch stops the app from crashing if storage is not available.
+    function saveData() {
+      try {
+        localStorage.setItem("expenses", JSON.stringify(expenses));
+        localStorage.setItem("budget", budgetInput.value);
+      } catch (e) { /* storage not available, ignore */ }
+    }
+
+    function loadData() {
+      try {
+        const saved = localStorage.getItem("expenses");
+        if (saved) expenses = JSON.parse(saved);
+        const budget = localStorage.getItem("budget");
+        if (budget) budgetInput.value = budget;
+      } catch (e) { /* ignore */ }
+      // Make sure new ids don't clash with old ones
+      nextId = expenses.reduce(function (max, e) { return Math.max(max, e.id); }, 0) + 1;
+    }
+
+    // Step 4: render() redraws everything from the data
+    function render() {
+      const budget = Number(budgetInput.value) || 0;
+      const total = expenses.reduce(function (sum, e) { return sum + e.amount; }, 0);
+
+      // Summary numbers
+      totalSpent.textContent = "₹" + total;
+      remaining.textContent = "₹" + (budget - total);
+      remaining.className = "mt-1 text-2xl font-bold " + (budget - total < 0 ? "text-rose-600" : "text-emerald-600");
+
+      // Progress bar (never wider than 100%)
+      const percent = budget > 0 ? Math.round((total / budget) * 100) : 0;
+      percentText.textContent = percent + "%";
+      progressBar.style.width = Math.min(percent, 100) + "%";
+      progressBar.className = "h-3 rounded-full transition-all duration-500 " +
+        (percent >= 100 ? "bg-rose-500" : percent >= 75 ? "bg-amber-500" : "bg-emerald-500");
+      warning.classList.toggle("hidden", percent < 100);
+
+      // Expense list (respects the filter dropdown)
+      const filter = filterInput.value;
+      const visible = expenses.filter(function (e) {
+        return filter === "All" || e.category === filter;
+      });
+
+      expenseList.innerHTML = "";
+      visible.forEach(function (e) {
+        const li = document.createElement("li");
+        li.className = "flex items-center justify-between gap-3 py-3";
+
+        const info = document.createElement("div");
+        info.innerHTML = '<p class="font-medium"></p><p class="text-xs text-slate-500"></p>';
+        info.children[0].textContent = e.title;       // textContent is safer than innerHTML
+        info.children[1].textContent = e.category;
+
+        const right = document.createElement("div");
+        right.className = "flex items-center gap-4";
+
+        const amount = document.createElement("span");
+        amount.className = "font-semibold";
+        amount.textContent = "₹" + e.amount;
+
+        const del = document.createElement("button");
+        del.textContent = "Delete";
+        del.className = "text-sm text-red-600 hover:text-red-800";
+        del.addEventListener("click", function () {
+          expenses = expenses.filter(function (x) { return x.id !== e.id; });
+          saveData();
+          render();
+        });
+
+        right.append(amount, del);
+        li.append(info, right);
+        expenseList.appendChild(li);
+      });
+      emptyMsg.classList.toggle("hidden", visible.length > 0);
+
+      // Category bars
+      categoryBars.innerHTML = "";
+      categories.forEach(function (cat) {
+        const catTotal = expenses
+          .filter(function (e) { return e.category === cat; })
+          .reduce(function (sum, e) { return sum + e.amount; }, 0);
+        const share = total > 0 ? Math.round((catTotal / total) * 100) : 0;
+
+        const row = document.createElement("div");
+        row.innerHTML =
+          '<div class="flex justify-between text-sm mb-1"><span>' + cat + '</span><span>₹' + catTotal + ' (' + share + '%)</span></div>' +
+          '<div class="w-full h-2 bg-slate-200 rounded-full overflow-hidden"><div class="h-2 bg-emerald-500 rounded-full" style="width:' + share + '%"></div></div>';
+        categoryBars.appendChild(row);
+      });
+    }
+
+    // Step 5: Add a new expense
+    function addExpense() {
+      const title = titleInput.value.trim();
+      const amount = Number(amountInput.value);
+
+      if (title === "" || amount <= 0) {
+        errorMsg.classList.remove("hidden");
+        return;
+      }
+      errorMsg.classList.add("hidden");
+
+      expenses.push({ id: nextId++, title: title, amount: amount, category: categoryInput.value });
+      titleInput.value = "";
+      amountInput.value = "";
+      titleInput.focus();
+      saveData();
+      render();
+    }
+
+    // Step 6: Event listeners connect user actions to functions
+    addBtn.addEventListener("click", addExpense);
+    amountInput.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") addExpense();
+    });
+    filterInput.addEventListener("change", render);
+    budgetInput.addEventListener("input", function () { saveData(); render(); });
+
+    // Start the app
+    loadData();
+    render();
+  </script>
+</body>
+</html>
